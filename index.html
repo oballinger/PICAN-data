@@ -1,5 +1,4 @@
 <script>
-document.addEventListener("DOMContentLoaded",magnify())
 function magnify(imgID, zoom) {
   var img, glass, w, h, bw;
   img = document.getElementById(imgID);
@@ -106,7 +105,7 @@ function magnify(imgID, zoom) {
 		<div class="img-magnifier-container">
 			<img id="myimage" src="assets/img/mosaic_5.jpg">	
 			<script>
-				 document.addEventListener("DOMContentLoaded", magnify("myimage", 15))
+				 magnify("myimage", 15)
 			</script>
 		</div>
         <header>
