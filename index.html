@@ -56,20 +56,6 @@ function magnify(imgID, zoom) {
 }
 </script>
 
-<script>
-const checkpoint = 10;
-
-window.addEventListener("scroll", () => {
-  const currentScroll = window.pageYOffset;
-  if (currentScroll <= checkpoint) {
-    opacity = 0 + currentScroll / checkpoint;
-  } else {
-    opacity = 1;
-  }
-  document.querySelector(".top").style.opacity = opacity;
-});
-</script>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -88,7 +74,7 @@ window.addEventListener("scroll", () => {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
       integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Ollie Ballinger - Spotting Child Soldiers in Kurdistan </title>
+    <title>Ollie Ballinger - Identifying Child Soldiers in Kurdistan </title>
   </head>
 	
     <!-- NAVIGATION -->
@@ -118,7 +104,6 @@ window.addEventListener("scroll", () => {
 <main>
       <article>
 		<div class="img-wrapper">
-			<img class="bottom" src="assets/img/6716_sehit_cicek51.jpg">
 			<img id="myimage" class="top" src="assets/img/mosaic_5.jpg">	
 			<script>
 				 document.addEventListener("DOMContentLoaded", magnify("myimage", 15))
@@ -126,21 +111,9 @@ window.addEventListener("scroll", () => {
 		</div>
         <header>
           
-	<h1><em>Spotting Child Soldiers in Kurdistan</em></h1>
+	<h1><em>Identifying Child Soldiers in Kurdistan</em></h1>
         </header>
-        <!-- SECTION ABOUT -->
-        <div class="article__about">
-          <p>By <a href="#">Ollie Ballinger</a></p>
-          <div class="article__about__details">
-            <p>December 10, 2020</p>
-            <ul class="social__list">
-              <li><a class="social__icons" href="#"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a class="social__icons" href="#"><i class="fab fa-twitter"></i></a></li>
-              <li><a class="social__icons" href="#"><i class="fas fa-envelope"></i></a></li>
-              <li><a class="social__icons" href="#"><i class="fas fa-share"></i></a></li>
-            </ul>
-          </div>
-        </div>
+    
         <!-- SECTION CONTENT -->
         <div class="article__content">
           <div class="article--center">
@@ -156,7 +129,7 @@ window.addEventListener("scroll", () => {
 	is invaluable, it is also extremely difficult, dangerous, and expensive. It also
 	offers a very limited window into the phenomenon of child recruitment. The small
 	number of documented cases means that we can’t reliably estimate the overall
-	number of child soldiers, identify recruitment hotspots, understand how
+	number of child soldiers, understand how
 	recruitment patterns evolve over time, or know which demographics are most at
 	risk.
 </p>
@@ -166,8 +139,7 @@ window.addEventListener("scroll", () => {
   quantities of information contained in the PKK’s online presence. The mosaic
   image above showcases some of this data: it is composed of 19,622 unique
   images uploaded by the PKK to a website hosting obituaries for their fallen
-  fighters. Using online PKK obituaries, leaked government records, and
-  artificial intelligence, this analysis was able to identify over 300 child
+  fighters. Using online PKK obituaries and a convolutional neural network, this analysis was able to identify over 300 child
   soldiers among the ranks of the PKK over the course of the past 20 years.
 </p>
 <p></p>
@@ -203,54 +175,31 @@ window.addEventListener("scroll", () => {
     href="http://hpgsehit.com/index.php/ehit-kuenyeleri/2012-ehitlerimiz/item/2870"
     >an obituary online</a
   >. The timeline of her life listed above was reconstructed using the
-  information contained in this obituary, combined with other open source
-  information. But Gülnaz is not unique in this regard-- the PKK publishes an
+  information contained in this obituary. But Gülnaz is not unique in this regard-- the PKK publishes an
   identical obituary for every one of its fallen fighters. By automating the
   gathering, processing, and merging of data, we can gather this level of
   detailed biographical information for thousands of militants.
 </p>
 <p></p>
 <p>
-  The following section provides a detailed overview of the data collection
-  process, in four parts:
+  The following section provides a detailed overview of the two-step data collection
+  process:
 </p>
 <p></p>
 <p>
 <br />
-1. Scraping the PKK’s website to collect basic biographical information <br />
-2. Matching obituaries with records in a leaked copy of the Turkish citizenship registry <br />
-3. Geocoding addresses <br />
-4. Using artificial intelligence to estimate age from images <br />
+1. Scraping the PKK’s website to collect and annotate images <br />
+2. Using a neural network to estimate age from images <br />
 <br />
 </p>
 <p></p>
 <p>
-  This process yields a database of 3,664 PKK individual recruits who were
+  This process yields a database of nearly 20,000 annotated images of 3,664 individual PKK recruits who were
   killed between 2001 and 2020. The database contains a significant amount of
-  information on each recruit, including their name, address, and dates and
-  locations of birth, recruitment, and death. The images accompanying each
-  obituary are
-</p>
-<p></p>
-<p>
-  The “Analysis” section explores trends in the database, including the
-  identification of child soldiers, a heatmap of militant’s birthplaces, and an
-  investigation of child recruitment patterns over time. Using open source tools
-  and data, I was able to document 278 confirmed cases of child recruitment by
-  the PKK, and a further 300 likely cases. Most of them were recruited from
-  three cities: Istanbul, Diyarbakir, and Van. 40% of them are female. Between
-  1993 and 1996, there were more children being recruited to the PKK than adults
-  each year.
+  information on each recruit, including their dates of birth, recruitment, and death. The “Analysis” section explores trends in the database, including demographic and longitudinal trends in the recruitment of child soldiers.
 </p>
 <p></p>
 <p><br /><strong><h2>Data Collection</h2></strong></p>
-<p></p>
-<p>
-  This section goes over the process of data collection and the construction of
-  the database. All of the data and methods used herein are open source. Links
-  to all data sources are provided throughout, and code for each step can be
-  found in this GitHub repository.
-</p>
 <p></p>
 <p><br /><strong>1. Scraping the PKK’s website</strong></p>
 <p></p>
@@ -289,97 +238,10 @@ window.addEventListener("scroll", () => {
 <p>
   This procedure creates a database containing biographical information on 3,664
   PKK militants who were killed in action. The photographs that accompany each
-  obituary are also scraped, creating a database of over 20,000 images.
+  obituary are also scraped, creating a database of nearly 20,000 images.
 </p>
 <p></p>
-<p>
-  <br /><strong>2. Matching Obituaries to the Turkish Citizenship Registry</strong><br />
-	While the PKK’s online obituaries contain basic information for each recruit, the
-  amount of detail can be significantly augmented using a leaked copy of the
-  Turkish citizenship registry. An SQL dump file of the registry was
-  <a href="https://torc5bhzq6xorhb4.onion.ws/">uploaded</a> to the internet in
-  2016, containing information on 49 million individuals who were adults in
-  2010. Below is a sample of the data contained in the leak, using president
-  Recep Tayyip Erdoğan as an example:
-</p>
-<p></p>
-	<img src="assets/img/IMG_6.png" alt="">
-<p></p>
-<p>
-	Using the
-  basic biographical information provided in the PKK obituaries, individuals can
-  be matched to records in the citizenship registry. Continuing with the example
-  of Gülnaz Ekinci, below is a demonstration of the matching procedure:
-</p>
-<p></p>
-    <img src="assets/img/IMG_7.png" alt="">
-<p></p>
-<p>
-  Data fields from the obituary are matched with the corresponding fields in the
-  citizenship registry.
-  <a href="https://github.com/seatgeek/fuzzywuzzy">Fuzzy matching</a> is used
-  for names, accounting for possible variations in spelling. In this example,
-  there are perfect matches in terms of the name, city of birth, and both
-  parents’ names. The birth year is also very close-- the obituary seems to have
-  made her two years older. A weighted average of these individual field matches
-  is computed to yield a score for the overall match. A match is considered
-  genuine if the obituary and the record have the same first name, last name,
-  parents’ names, birth city, and birth date, allowing for minor variations in
-  spelling and small discrepancies in the birth date. In this instance, there is
-  little doubt that the match in the citizenship registry is the same person as
-  in the obituary.
-</p>
-<p></p>
-<p>
-  The registry-derived data adds a considerable amount of detail, including
-  their last registered address. Though Gülnaz’s obituary was fairly detailed,
-  most obituaries are missing one or more fields. Matching obituaries with the
-  citizenship registry allows for these missing fields to be filled in. Doing so
-  also allows for the verification of the data in the obituary. For example, the
-  discrepancy between Gülnaz’s obituary-reported birth year and the one found in
-  the citizenship registry is likely deliberate. The obituary lists that Gülnaz
-  joined the PKK in 2001, which by their own admission would have made her 17
-  when she joined. Because specific months are not reported in the obituary, she
-  could plausibly have been almost 18 if she was born in January 1984 and joined
-  the PKK in December 2001. The citizenship registry shows that she was at most
-  15 years old when she joined the PKK.
-</p>
-<p></p>
-<p>
-  Despite the extraordinary amount of information yielded by this technique, it
-  has several limitations. The citizenship registry only contains records for
-  68% of Turks (49 million) who were alive and over the age of 18 in 2010. This
-  means we can’t apply this technique to individuals who were killed prior to
-  2010, or who were born after 1992. Still, 1,365 obituaries (roughly ⅓ of the
-  database) were positively matched with records in the citizenship registry.
-</p>
-<p></p>
-<p><br /><strong>3. Geocoding Addresses</strong></p>
-<p></p>
-<p>
-  To enable geographic analysis, addresses need to be turned into coordinates.
-  The addresses contained in the citizenship registry data are geocoded using
-  this script, which takes the address and turns it into a latitude and
-  longitude coordinate using the Google Maps API. This effectively automates the
-  process of putting an address into the Google Maps search bar and copying the
-  coordinates of the resulting pin. In the interest of privacy, geographic
-  information below the neighborhood level is not used and coordinates are
-  offset randomly by up to 1km.
-</p>
-<p></p>
-<p><br /><strong>4. Age Estimation using Artificial Intelligence</strong></p>
-<p></p>
-<p>
-  Despite having highly detailed information for roughly ⅓ of the recruits in
-  the database, important gaps remain. Recruits who were born after 1992 and
-  died after 2012 are a particular problem: they were too young to be matched in
-  the citizenship registry, and the PKK stopped reporting birth and recruitment
-  years after 2012. This is particularly problematic given that we’re interested
-  in spotting child soldiers. But where biographical information is missing, the
-  images contained in the obituaries enable a rough estimate of a recruit’s age:
-</p>
-<p></p>
-	<img src="assets/img/IMG_8.jpg" alt="">
+<p><br /><strong>2. Age Estimation using a CNN</strong></p>
 <p></p>
 <p>
   This is a picture of
@@ -389,15 +251,16 @@ window.addEventListener("scroll", () => {
   >, who was killed in 2015. Her obituary doesn’t list a birth date or
   recruitment date, but the pictures show her to be very young. We can get a
   rough idea of her age using Microsoft’s
-  <a href="https://www.how-old.net/">how-old.net</a> tool, which uses artificial
-  intelligence to predict age and gender based on an image. The estimation
+  <a href="https://www.how-old.net/">how-old.net</a> tool, which uses a neural network to predict age and gender based on an image. The estimation
   suggests that she is roughly 11 years old.
 </p>
+<p></p>
+	<img src="assets/img/IMG_8.jpg" alt="">
 <p></p>
 <p>
   Because the obituary database contains roughly 20,000 images, inputting them one
   by one into how-old.net would take a while. I automated this process in
-  python, using a pre-trained
+  python, using this pre-trained
   <a href="https://talhassner.github.io/home/publication/2015_CVPR"
     >Convolutional Neural Network (CNN)</a
   >
@@ -409,20 +272,14 @@ window.addEventListener("scroll", () => {
 <p></p>
 <p>
   It’s worth noting that neural networks are still pretty bad at estimating
-  someone’s precise age. However, even if individual age estimates aren’t very
+  someone’s precise age. I've tested several different pre-trained CNNs and results were similar. However, even if individual age estimates aren’t very
   precise, we can still use them to sort the database based on apparent age.
   Instead of going through 20,000 unsorted images looking for child soldiers, we
   can sort the database and begin looking at images in ascending order of
-  estimated age, bringing the youngest looking recruits to the top.
+  apparent age, bringing the youngest-looking recruits to the top.
 </p>
 <p></p>
 <p><br /><strong><h2>Analysis</h2></strong></p>
-<p></p>
-<p>
-  Having generated a database containing detailed biographical information on
-  3,664 PKK recruits, we can begin exploring trends in the recruitment of
-  children.
-</p>
 <p></p>
 <p><br /><br /><strong>How many child soldiers are there in the PKK?</strong></p>
 <p></p>
@@ -491,103 +348,7 @@ window.addEventListener("scroll", () => {
 	by the PKK's own admission based on the birth and recruitment years, 
 	and 70 additional cases based on the images. The true total, however, is likely to be higher. 
 </p>
-<p></p>
-<p><br /><br /><strong>Where are child soldiers recruited from?</strong></p>
-<p></p>
-<p>
-  Before focusing on children, let’s have a look at the general geographic
-  distribution of PKK recruits’ birthplaces. This is presented in the
-  interactive heatmap below, which can be toggled to restrict the sample to adults or children. Zooming in gradually overlays a satellite basemap.
-</p>
-<p></p>
-</div>
-		
-<div class='mapbox'>
-  <title>PKK Recruitment Heatmap</title>
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css' rel='stylesheet'/>
-  
-  <div id='map'></div>
-    <div id='console'>
-      <h1>PKK Recruitment</h1>
-        <div class='session'>
-        <div class='row' id='buttons'>
-          <input id='all' type='radio' name='toggle' value='0' checked='checked'>
-          <label for='all'>Adults</label>
-          <input id='weekday' type='radio' name='toggle' value='1'>
-          <label for='weekday'>Children</label>
-      </div>
-    </div>
-  </div>
-</div>	
-		
-<script>
-mapboxgl.accessToken = 'pk.eyJ1Ijoib2JhbGxpbmdlciIsImEiOiJjazdvbXFkMWEwYXVrM2ZtdHU0cTd0cG5hIn0.vIj9s8F6M49ZP5DAh9Kd3Q';
-
-var map = new mapboxgl.Map({
-  id: 'recruits',
-  container: 'map', // container element id
-  style: 'mapbox://styles/oballinger/ckhach7j44zgg19k6sn14u1n8',
-  center: [ 35.2433, 38.9637], // initial map center in [lon, lat]
-  zoom: 5
-});
-
-document.getElementById('buttons').addEventListener('change', 
- function(e) {
- var hour = parseInt(e.target.value);
-  // update the map
- var Filter=[
-    "all",
-    [">", ["get", "score"], 60],
-    ['==', ['get', 'child'], hour]
-]
- 
-map.setFilter('recruits',Filter) 
-});	
-</script>		
-		
-<div class="article--center">
-<p></p>
-<p>
-  This heatmap highlights a number of important spatial trends. Though the PKK
-  began as a rural movement, a large quantity of recruits appear to be from
-  urban centers. Major clusters of recruits can be seen in Istanbul, as well as
-  urban centers in the Southeast.
-</p>
-<p></p>
-<p>
-  Zooming in to Istanbul shows recruitment to be heavily concentrated on the
-  European side, particularly in the neighborhoods of Bahçelievler and Bağcılar.
-  Though one might expect PKK recruits to predominantly originate from the
-  country’s majority Kurdish Southeast, Istanbul is actually the largest Kurdish
-  city in the world. This is no small part due to the fact that Istanbul was the
-  primary destination for Kurds who were forcibly displaced by the Turkish
-  government’s counterinsurgency tactics, which included the
-  <a href="https://www.hrw.org/reports/1996/Turkey2.htm"
-    >burning of thousands of Kurdish villages</a
-  >.
-</p>
-<p></p>
-<p>
-  That being said, a large number of recruits do come from the Southeast.
-  Diyarbakir and Van account for a significant number of these recruits, but
-  unlike the rest of the country, there is a considerable amount of rural
-  recruitment as well. Agricultural villages in the lowlands near the Syrian and
-  Iraqi borders appear to constitute an important base of support for the PKK.
-  Remote villages in the Taurus Mountains also display relatively high levels of
-  recruitment considering how sparsely populated this area is.
-</p>
-<p></p>
-<p>
-  Restricting the heatmap to only include children shows hotspots in Istanbul,
-  Diyarbakir, and Van. Though the recruitment of child soldiers is often thought to be a mainly rural
-  phenomenon, the proportion of urban recruits is higher for children than it is
-  for the whole sample. If we zoom into Istanbul, we see that all of the
-  underage recruits are closely clustered across a few neighborhoods in the West
-  of the city.
-</p>
-<p></p>
-<p><br /><strong>How has the use of child soldiers evolved over time?</strong></p>
+<p><br /><strong>How has the recruitment of child soldiers evolved over time?</strong></p>
 <p></p>
 <p>
   Below is a bar chart showing the number of recruits who joined the PKK in a
@@ -663,26 +424,9 @@ map.setFilter('recruits',Filter)
 <p>
   For a long time, field interviews might have been the only way of gathering
   information on the recruitment of child soldiers. These days, there is
-  sometimes enough information online to enable basic monitoring, with a little
-  creativity and some code. Using online PKK obituaries, leaked government
-  records, and artificial intelligence, this analysis was able to identify over
+  sometimes enough information online to enable basic monitoring. Relying exclusively on the group's online presence, this analysis was able to identify over
   300 child soldiers among the ranks of the PKK over the course of the past 20
   years.
 </p>
       </div>
-        <!-- SECTION FOOTER -->
-        <footer class="article-footer">
-          <p> <a href="#">Order Reprints</a> | <a
-              href="#">Today’s Paper</a> | <a href="#">Subscribe</a> </p>
-          <div class="article-footer__content">
-            <button class="btn-default">READ 615 COMMENTS</button>
-            <ul class="social__list">
-              <li><a class="social__icons" href="#"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a class="social__icons" href="#"><i class="fab fa-twitter"></i></a></li>
-              <li><a class="social__icons" href="#"><i class="fas fa-envelope"></i></a></li>
-              <li><a class="social__icons" href="#"><i class="fas fa-share"></i></a></li>
-            </ul>
-          </div>
-        </footer>
 
-      </article>
