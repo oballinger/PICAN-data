@@ -2,6 +2,7 @@
 function magnify(imgID, zoom) {
   var img, glass, w, h, bw;
   img = document.getElementById(imgID);
+	
   /*create magnifier glass:*/
   glass = document.createElement("DIV");
   glass.setAttribute("class", "img-magnifier-glass");
@@ -16,7 +17,7 @@ function magnify(imgID, zoom) {
   h = glass.offsetHeight / 2;
   /*execute a function when someone moves the magnifier glass over the image:*/
   glass.addEventListener("mousemove", moveMagnifier);
-  img.addEventListener("mousemove", moveMagnifier);
+  img.addEventListener("mousemove", moveMagnrifier);
   /*and also for touch screens:*/
   glass.addEventListener("touchmove", moveMagnifier);
   img.addEventListener("touchmove", moveMagnifier);
@@ -78,13 +79,8 @@ function magnify(imgID, zoom) {
 
 <div class="img-magnifier-container">
 	
+	<img id="myimage" src="assets/img/mosaic_5.jpg">
 	<script>
-	var img = new Image();
-	img.id="myimage"
-	img.onload = magnify("myimage", 15)
-	img.src = "assets/img/mosaic_5.jpg";
+		magnify("myimage", 15)
 	</script>
-	
-	<!--<img id="myimage" src="assets/img/mosaic_5.jpg">-->
-
 </div>
