@@ -1,6 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-154866877-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-154866877-1');
+	</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
+      integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Ollie Ballinger - 5 </title>
+  </head>
+
+<div class="img-magnifier-container">
+	
+	<img id="myimage" src="assets/img/mosaic_5.jpg">
+	
 <script>
-var img = new Image();
-img.onload = function magnify(imgID, zoom) {
+var newimg = new Image();
+newimg.onload = function magnify(imgID, zoom) {
   var img, glass, w, h, bw;
   img = document.getElementById(imgID);
 	
@@ -56,34 +81,6 @@ img.onload = function magnify(imgID, zoom) {
   }
 }
 
-img.src = "assets/img/mosaic_5.jpg"
+newimg.src = "assets/img/mosaic_5.jpg"
 </script>
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-154866877-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-154866877-1');
-	</script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
-      integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous" />
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Ollie Ballinger - 4 </title>
-  </head>
-
-<div class="img-magnifier-container">
-	
-	<img id="myimage" src="assets/img/mosaic_5.jpg">
-	<script>
-		magnify("myimage", 15)
-	</script>
 </div>
