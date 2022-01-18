@@ -24,12 +24,10 @@
 	<img id="myimage" src="assets/img/mosaic_5.jpg">
 	
 <script>
-var newimg = new Image();
-newimg.src = "assets/img/mosaic_5.jpg"
-newimg.onload = function magnify(imgID, zoom) {
-  var img, glass, w, h, bw;
-  img = document.getElementById(imgID);
-	
+var img = new Image();
+img.src = "assets/img/mosaic_5.jpg"
+img.onload = function magnify(img, zoom) {
+  var img, glass, w, h, bw;	
   /*create magnifier glass:*/
   glass = document.createElement("DIV");
   glass.setAttribute("class", "img-magnifier-glass");
