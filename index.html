@@ -1,5 +1,6 @@
 <script>
-function magnify(imgID, zoom) {
+var img = new Image();
+img.onload = function magnify(imgID, zoom) {
   var img, glass, w, h, bw;
   img = document.getElementById(imgID);
 	
@@ -54,6 +55,8 @@ function magnify(imgID, zoom) {
     return {x : x, y : y};
   }
 }
+
+img.src = "assets/img/mosaic_5.jpg"
 </script>
 
 <!DOCTYPE html>
@@ -74,7 +77,7 @@ function magnify(imgID, zoom) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
       integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Ollie Ballinger - 3 </title>
+    <title>Ollie Ballinger - 4 </title>
   </head>
 
 <div class="img-magnifier-container">
